@@ -8,7 +8,7 @@ import static junit.framework.TestCase.assertEquals;
  *      - Branches 50%
  *      - Mutations: 80%
  */
-public class MainCoverageTest {
+public class CustomerTest {
     @Test
     public void shouldPrintStatement()
     {
@@ -136,5 +136,18 @@ public class MainCoverageTest {
                 "\tChildren Movie 1\t1.5\n" +
                 "Amount owed is 1.5\n" +
                 "You earned 1 frequent renter points.", sut.Statement());
+    }
+
+    @Test
+    public void shouldShangeRentalCode()
+    {
+        //Arrange
+        Movie sut = new Movie("Test Movie", PriceCodes.NewRelease);
+
+        //Act
+        sut.setPriceCode(PriceCodes.Regular);
+
+        //Assert
+        assertEquals(PriceCodes.Regular, sut.getPriceCode());
     }
 }
