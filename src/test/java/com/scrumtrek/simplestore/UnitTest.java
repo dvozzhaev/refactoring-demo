@@ -26,8 +26,7 @@ public class UnitTest {
     }
 
     @Test
-    public void shouldAddFrequentPointsWhenNewMovieLongRented()
-    {
+    public void shouldAddFrequentPointsWhenNewMovieLongRented() {
         Rental rentalMock = createRental("New Release Movie 1", PriceCodes.NewRelease, 3);
 
         //Arrange
@@ -45,8 +44,7 @@ public class UnitTest {
 
 
     @Test
-    public void shouldChargeExtraWhenRegularMovieLongRented()
-    {
+    public void shouldChargeExtraWhenRegularMovieLongRented() {
         Rental rentalMock = createRental("Regular Movie 1", PriceCodes.Regular, 5);
 
         //Arrange
@@ -63,8 +61,7 @@ public class UnitTest {
     }
 
     @Test
-    public void shouldChargeExtraWhenChildrenMovieLongRented()
-    {
+    public void shouldChargeExtraWhenChildrenMovieLongRented() {
         Rental rentalMock = createRental("Children Movie 1", PriceCodes.Childrens, 5);
 
         //Arrange
@@ -81,8 +78,7 @@ public class UnitTest {
     }
 
     @Test
-    public void shouldNotChargeExtraWhenRegularMovieShortRented()
-    {
+    public void shouldNotChargeExtraWhenRegularMovieShortRented() {
         Rental rentalMock = createRental("Regular Movie 1", PriceCodes.Regular, 1);
 
         //Arrange
@@ -99,8 +95,7 @@ public class UnitTest {
     }
 
     @Test
-    public void shouldNotChargeExtraWhenChildrenMovieShortRented()
-    {
+    public void shouldNotChargeExtraWhenChildrenMovieShortRented() {
         Rental rentalMock = createRental("Children Movie 1", PriceCodes.Childrens, 1);
 
         //Arrange

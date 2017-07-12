@@ -2,13 +2,13 @@ package com.scrumtrek.simplestore;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
 import static junit.framework.TestCase.assertEquals;
 
 @Ignore
 public class CustomerTest {
     @Test
-    public void printStatementSmoke()
-    {
+    public void printStatementSmoke() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie childrenMovie = new Movie("Children Movie 1", PriceCodes.Childrens);
@@ -33,8 +33,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldSetNameFromConstructor()
-    {
+    public void shouldSetNameFromConstructor() {
         final String name = "Customer1";
         //Arrange
         Customer sut = new Customer(name);
@@ -46,8 +45,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldAddFrequentPointsWhenNewMovieLongRented()
-    {
+    public void shouldAddFrequentPointsWhenNewMovieLongRented() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie newMovie = new Movie("New Release Movie 1", PriceCodes.NewRelease);
@@ -64,8 +62,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldChargeExtraWhenRegularMovieLongRented()
-    {
+    public void shouldChargeExtraWhenRegularMovieLongRented() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie regularMovie = new Movie("Regular Movie 1", PriceCodes.Regular);
@@ -82,8 +79,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldChargeExtraWhenChildrenMovieLongRented()
-    {
+    public void shouldChargeExtraWhenChildrenMovieLongRented() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie childrenMovie = new Movie("Children Movie 1", PriceCodes.Childrens);
@@ -100,8 +96,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldNotChargeExtraWhenRegularMovieShortRented()
-    {
+    public void shouldNotChargeExtraWhenRegularMovieShortRented() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie regularMovie = new Movie("Regular Movie 1", PriceCodes.Regular);
@@ -118,8 +113,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldNotChargeExtraWhenChildrenMovieShortRented()
-    {
+    public void shouldNotChargeExtraWhenChildrenMovieShortRented() {
         //Arrange
         Customer sut = new Customer("Customer1");
         Movie childrenMovie = new Movie("Children Movie 1", PriceCodes.Childrens);
@@ -136,8 +130,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void shouldChangeRentalCode()
-    {
+    public void shouldChangeRentalCode() {
         //Arrange
         Movie sut = new Movie("Test Movie", PriceCodes.NewRelease);
 
@@ -146,5 +139,15 @@ public class CustomerTest {
 
         //Assert
         assertEquals(PriceCodes.Regular, sut.getPriceCode());
+    }
+
+    @Test
+    public void shouldGiveDiscountWhenXxxRented() {
+        Movie MovieRegular = new Movie("Test Regular Movie", PriceCodes.Regular);
+        Movie MovieXXX = new Movie("Test XXX Movie", PriceCodes.XXX);
+        Rental RentalRegular = new Rental(MovieRegular, 5);
+        Rental RentalXXX = new Rental(MovieXXX, 5);
+        //Xxx movies should be %15 cheaper than regular movies
+        assertEquals(RentalRegular.price() * 0.85, RentalXXX.price());
     }
 }
